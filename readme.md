@@ -8,9 +8,9 @@ More to come
 
 
 ## Requirements
-Node
-PHP 5.6+
-Composer
+* Node
+* PHP 5.6+
+* Composer
 
 ## Installation
 
@@ -18,8 +18,8 @@ web root should be pointed to /path/to/app/public
 
 cd to /path/to/app and run:
 
-npm install
-composer install
+`npm install` (for development tools)
+`composer install`
 
 More to come 
 
