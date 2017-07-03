@@ -19,7 +19,20 @@
 <body>
     <div class="container">
         <div id="app">
-        
+@if ($errors->any())
+    <div class="alert-container">
+      <div class="alert alert-danger">
+        <i class="icon-warning signal"></i>
+        <a class="close-alert" href="#"><i class="icon-cross2"></i></a>
+        <div class="alert-title">Error running setup</div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div>
+    </div>
+@endif        
             
             @include('components/sidebar')
 
@@ -34,10 +47,14 @@
                 <div class="title-bar">
                     <span class="app-name">Argus</span> <span class="app-version">v1.0</span>
                 </div>
+                <div class="actions">
+                  <a class="add-camera" href=""><i class="icon-plus"></i></a>
+                </div>
 
             </div>
         </div>
     </div>
-  <!--<script src="js/scripts.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

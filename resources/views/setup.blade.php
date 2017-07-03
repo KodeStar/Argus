@@ -8,18 +8,6 @@
 
 @section('content')
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <i class="icon-warning"></i>
-        <div class="alert-title">Error running setup</div>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
     <form class="style" method="POST" action="/setup">
         {{ csrf_field() }}
         <div class="inputrow">

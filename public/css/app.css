@@ -1936,16 +1936,16 @@ output {
 }
 
 @font-face {
-  font-family: 'grace';
-  src: url("fonts/grace.eot?dz8ji9");
-  src: url("fonts/grace.eot?dz8ji9#iefix") format("embedded-opentype"), url("fonts/grace.ttf?dz8ji9") format("truetype"), url("fonts/grace.woff?dz8ji9") format("woff"), url("fonts/grace.svg?dz8ji9#grace") format("svg");
+  font-family: 'argus';
+  src: url("fonts/argus.eot?5zxcq2");
+  src: url("fonts/argus.eot?5zxcq2#iefix") format("embedded-opentype"), url("fonts/argus.ttf?5zxcq2") format("truetype"), url("fonts/argus.woff?5zxcq2") format("woff"), url("fonts/argus.svg?5zxcq2#argus") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'grace' !important;
+  font-family: 'argus' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1955,6 +1955,14 @@ output {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cross2:before {
+  content: "\e90c";
+}
+
+.icon-plus:before {
+  content: "\e90a";
 }
 
 .icon-files:before {
@@ -1987,6 +1995,10 @@ output {
 
 .icon-security-camera:before {
   content: "\e907";
+}
+
+.icon-cross:before {
+  content: "\e90b";
 }
 
 .icon-checkmark:before {
@@ -2163,6 +2175,11 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+#rightbar .actions {
+  text-align: center;
+  padding: 30px 20px;
+}
+
 .app-name {
   font-family: 'Lobster Two', cursive;
   font-size: 36px;
@@ -2181,13 +2198,23 @@ body {
   background: #111;
   text-align: center;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   border: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.btn:hover, .btn:-webkit-any-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .btn-cta {
-  background: #068ff1;
+  background: #955aa2;
+}
+
+.btn-alert {
+  background: #cc0000;
 }
 
 .list-camera {
@@ -2243,13 +2270,15 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .list-camera .actions .btn {
   display: block;
+  margin-top: 5px;
+  min-width: 180px;
 }
 
 .list-camera .info {
@@ -2269,27 +2298,33 @@ body {
   height: auto;
 }
 
-.alert {
+.alert-container {
   max-width: 800px;
   min-width: 600px;
-  padding: 20px 30px;
   position: fixed;
   top: 30px;
   z-index: 99;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.alert {
+  width: 100%;
+  padding: 20px 30px;
   background: #f6f6f6;
   border-radius: 5px;
   box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.25);
   padding-left: 100px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .alert .alert-title {
   font-weight: 600;
 }
 
-.alert i {
+.alert i.signal {
   position: absolute;
   top: 50%;
   left: 25px;
@@ -2298,8 +2333,63 @@ body {
   margin-top: -23px;
 }
 
-.alert-danger i {
+.alert .close-alert {
+  position: absolute;
+  right: 17px;
+  top: 10px;
+  font-size: 18px;
+  color: #b3b3b3;
+}
+
+.alert-danger i.signal {
   color: #c00;
+}
+
+.add-camera {
+  background-image: linear-gradient(to bottom, #39ada4 0%, #2c8a85 100%);
+  background-repeat: repeat-x;
+  font-size: 45px;
+  line-height: 90px;
+  text-align: center;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.77), 0 1px 1px rgba(255, 255, 255, 0.68);
+}
+
+.add-camera:before {
+  content: '';
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  background-image: linear-gradient(to bottom, #41c7bc 0%, #3ec3bb 100%);
+  background-repeat: repeat-x;
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.77), inset 0 1px 1px rgba(255, 255, 255, 0.58);
+}
+
+.add-camera:after {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 31px;
+  width: 53px;
+  height: 50px;
+}
+
+.add-camera i {
+  margin-left: 1px;
+  position: relative;
+}
+
+.add-camera:hover, .add-camera:-webkit-any-link {
+  text-decoration: none;
+  color: #d5efed;
 }
 
 .inputrow {

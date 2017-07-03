@@ -87,6 +87,10 @@ body {
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
     }
+    .actions {
+        text-align: center;
+        padding: 30px 20px;
+    }
 }
 
 .app-name {
@@ -107,12 +111,21 @@ body {
     background: #111;
     text-align: center;
     color: rgba(255,255,255,0.9);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     border: none;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+    &:hover, &:-webkit-any-link {
+        text-decoration: none;
+        color: rgba(255,255,255,0.9);
+    }
+
 }
 .btn-cta {
-    background: #068ff1;
+    background: #955aa2;
+}
+.btn-alert {
+    background: #cc0000;
 }
 
 .list-camera {
@@ -149,9 +162,11 @@ body {
         padding: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-end;
         .btn {
             display: block;
+            margin-top: 5px;
+            min-width: 180px;
         }
     }
     .info {
@@ -169,23 +184,28 @@ body {
 
 }
 
-.alert {
+.alert-container {
     max-width: 800px;
     min-width: 600px;
-    padding: 20px 30px;
     position: fixed;
     top: 30px;
     z-index: 99;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.alert {
+    width: 100%;
+    padding: 20px 30px;
     background: #f6f6f6;
     border-radius: 5px;
     box-shadow: 0 0 9px 0 rgba(0,0,0,0.25);
     padding-left: 100px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-bottom: 20px;
+    position: relative;
     .alert-title {
         font-weight: 600;
     }
-    i {
+    i.signal {
         position: absolute;
         top: 50%;
         left: 25px;
@@ -193,13 +213,61 @@ body {
         line-height: 1;
         margin-top: -23px;
     }
+    .close-alert {
+        position: absolute;
+        right: 17px;
+        top: 10px;
+        font-size: 18px;
+        color: #b3b3b3;
+    }
 }
 .alert-danger {
-        i {
+        i.signal {
             color: #c00;
         }
 }
-
+.add-camera {
+    //background: #32a9a2;
+    @include gradient-y(#39ada4, #2c8a85);
+    font-size: 45px;
+    line-height: 90px;
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: inline-block;
+    
+    position: relative;
+    box-shadow: 0 -1px 1px rgba(0, 0, 0, .77), 0 1px 1px rgba(255, 255, 255, .68);
+    &:before {
+        content: '';
+        border-radius: 100%;
+        -webkit-border-radius: 100%;
+        position: absolute;
+        left: 5px;
+        right: 5px;
+        top: 5px;
+        bottom: 5px;
+        @include gradient-y(#41c7bc, #3ec3bb);
+        box-shadow: inset 0 -1px 1px rgba(0, 0, 0, .77), inset 0 1px 1px rgba(255, 255, 255, .58);
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        left: 28px;
+        top: 31px;
+        width: 53px;
+        height: 50px;
+    }
+    i {
+        margin-left: 1px;
+        position: relative;
+    }
+    &:hover, &:-webkit-any-link {
+        text-decoration: none;
+        color: #d5efed;
+    }
+}
 .inputrow {
     margin: 8px 0;
 }

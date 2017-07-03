@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Setting as Setting;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
+use App\Camera as Camera;
 
 class CameraController extends Controller
 {
@@ -20,11 +21,11 @@ class CameraController extends Controller
         //die(phpinfo());
     }
 
-    public function dashboard(CameraContract $camera)
+    public function dashboard()
     {
         if(!$this->databaseReady()) return redirect('setup');
 
-        $data['cameras'] = $camera->list();
+        $data['cameras'] = Camera::all();
         return view('home', $data);
     }
 
@@ -56,7 +57,7 @@ class CameraController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function storesetup(Request $request)
+    public function storesetup(Request $request, CameraContract $camera)
     {
         $this->validate($request, [
             'backend' => 'required',
@@ -74,6 +75,8 @@ class CameraController extends Controller
         $backend_location->key = 'backend_location';
         $backend_location->value = $request->input('backend_location');
         $backend_location->save();
+
+        Camera::populate($camera->list());
 
         return redirect('/');
     }
