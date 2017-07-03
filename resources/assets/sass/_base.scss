@@ -1,0 +1,224 @@
+body {
+    @include gradient-radial(#9ba0a3, #b8bfc5);
+    font-family: 'Open Sans', sans-serif;
+}
+#app {
+    display: flex;
+    min-height: 100vh;
+    margin: 50px 15px;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.5);
+    border-radius: $border-radius;
+}
+#leftbar {
+    min-height: 100vh;
+    flex: 0 0 100px;
+    background: #363d43;
+    border-radius: $border-radius 0 0 $border-radius;
+    position: relative;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style:  none;
+        margin-top: 15px;
+        li {
+            a {
+                color: rgba(255,255,255,0.5);
+                padding: 15px;
+                display: block;
+                text-align: center;
+                &:hover {
+                    text-decoration: none;
+                    color: rgba(255,255,255,0.7);
+                }
+            }
+            &.active {
+                a {
+                    color: #44cbbc;
+                }
+            }
+        }
+    }
+    i {
+        font-size: 30px;
+    }
+}
+.title-bar {
+    padding: 15px 20px 5px;
+    position: relative;
+    line-height: 56px;
+    h1 {
+        margin-bottom: 0;
+        font-size: 1.8em;
+    }
+    &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        content: "";
+        height: 0;
+    }
+}
+
+#content {
+    @include gradient-directional(#f3f4f5, #e2e6e8, 75deg);
+    flex: 1;
+    .title-bar {
+        border-bottom: 1px solid rgba(255,255,255,0.9);
+        &:after {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+    }
+}
+
+
+#rightbar {
+    min-height: 100vh;
+    flex: 0 0 360px;
+    background: #fff;
+    @include gradient-y(#44cbbc, #28a7b9);
+    border-radius: 0 $border-radius $border-radius 0;
+    .title-bar {
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+        line-height: 48px;
+        &:after {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+    }
+}
+
+.app-name {
+    font-family: 'Lobster Two', cursive;
+    font-size: 36px;
+    color: #fcfcfc;
+    text-shadow: 3px 5px 10px rgba(0,0,0,0.2);
+}
+.app-version {
+    font-size: 14px;
+    font-weight: 700;
+
+}
+
+.btn {
+    padding: 10px 25px;
+    border-radius: 5px;
+    background: #111;
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+}
+.btn-cta {
+    background: #068ff1;
+}
+
+.list-camera {
+    padding: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.9);
+    position: relative;
+    &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        content: "";
+        height: 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .details {
+        background: #fcfcfc;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
+        display: flex;
+        h3 {
+            color: #222629;
+        }
+        dl {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            font-size: 13px;
+            dd, dt {
+                flex: 0 0 50%;
+            }
+        }
+    }
+    .actions {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .btn {
+            display: block;
+        }
+    }
+    .info {
+        vertical-align: top;
+        padding: 20px;
+        flex: 1;
+    }
+    .camera-stream {
+        width: 400px;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+}
+
+.alert {
+    max-width: 800px;
+    min-width: 600px;
+    padding: 20px 30px;
+    position: fixed;
+    top: 30px;
+    z-index: 99;
+    background: #f6f6f6;
+    border-radius: 5px;
+    box-shadow: 0 0 9px 0 rgba(0,0,0,0.25);
+    padding-left: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    .alert-title {
+        font-weight: 600;
+    }
+    i {
+        position: absolute;
+        top: 50%;
+        left: 25px;
+        font-size: 46px;
+        line-height: 1;
+        margin-top: -23px;
+    }
+}
+.alert-danger {
+        i {
+            color: #c00;
+        }
+}
+
+.inputrow {
+    margin: 8px 0;
+}
+
+input[type=text], select {
+    padding: 10px 20px;
+    border: none;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #e2e2e2;
+}
+label {
+    display: inline-block;
+    width: 40%;
+    max-width: 200px;
+}
+form.style {
+    margin: 30px;
+    padding: 10px 20px;
+    @include gradient-directional(#ffffff, #f5f5f5, 75deg);
+    border: 1px solid #e2e2e2;
+}
