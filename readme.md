@@ -23,4 +23,4 @@ composer install
 
 More to come 
 
-<p align="center"><img src="http://imgur.com/rSxHiLC"></p>
+<p align="center"><img src="http://i.imgur.com/rSxHiLC.png"></p>
