@@ -13,7 +13,9 @@
         <div class="inputrow">
             <label>Backend</label>
             <select name="backend">
-                <option value="zoneminder">ZoneMinder</option>
+                @foreach($available_backends as $interface => $backend)
+                <option value="{{ $interface }}">{{ $backend }}</option>
+                @endforeach
             </select>
         </div>
         <div class="inputrow">

@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use App\Camera as Camera;
 use App\Setting as Setting;
 
-class Zoneminder implements CameraContract
+class Shinobi implements CameraContract
 {
     /**
      * Gets JSON feed from backend and turns into PHP array
@@ -16,16 +16,13 @@ class Zoneminder implements CameraContract
      */
     public function getFeed()
     {
-        $demo = env('DEMO', false);
         $backend = Setting::value('backend_location');
-
-        if($demo) { // return early with a demo JSON file
-            return json_decode(file_get_contents('../resources/assets/camera.json'));
-        }
+        $api_key = Setting::value('api_key');
+        $group = Setting::value('group');
 
         $client = new Client(); //GuzzleHttp\Client
         $response = $client->get(
-            $backend.'/zm/api/monitors.json', 
+            $backend.'/shinobi/api/monitors.json', 
                 [
                     //'auth' =>  ['user', 'pass']
                 ]

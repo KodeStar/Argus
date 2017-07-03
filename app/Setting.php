@@ -2,6 +2,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Setting extends Model
 {
@@ -19,5 +20,13 @@ class Setting extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public static function value($key)
+    {
+        if (DB::connection()->getDatabaseName()) {
+            return self::where('key', $key)->first()->value;
+        }
+        return false;
+    }
 
 }
