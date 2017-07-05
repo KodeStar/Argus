@@ -2385,7 +2385,7 @@ body {
   color: #c00;
 }
 
-.add-camera {
+.round-button {
   background-image: linear-gradient(to bottom, #39ada4 0%, #2c8a85 100%);
   background-repeat: repeat-x;
   font-size: 45px;
@@ -2399,7 +2399,7 @@ body {
   box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.77), 0 1px 1px rgba(255, 255, 255, 0.68);
 }
 
-.add-camera:before {
+.round-button:before {
   content: '';
   border-radius: 100%;
   -webkit-border-radius: 100%;
@@ -2413,7 +2413,7 @@ body {
   box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.77), inset 0 1px 1px rgba(255, 255, 255, 0.58);
 }
 
-.add-camera:after {
+.round-button:after {
   content: '';
   position: absolute;
   left: 28px;
@@ -2422,14 +2422,20 @@ body {
   height: 50px;
 }
 
-.add-camera i {
+.round-button i {
   margin-left: 1px;
   position: relative;
 }
 
-.add-camera:hover, .add-camera:-webkit-any-link {
+.round-button:hover, .round-button:-webkit-any-link {
   text-decoration: none;
   color: #d5efed;
+}
+
+.round-button.smaller {
+  width: 50px;
+  height: 50px;
+  font-size: 35px;
 }
 
 .inputrow {
@@ -2497,4 +2503,41 @@ label {
 
 #app.view2 .list-camera .info, #app.view2 .list-camera .actions {
   display: none;
+}
+
+#app.view3 #rightbar {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 110px;
+          flex: 0 0 110px;
+}
+
+#app.view3 #cameralist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#app.view3 .list-camera {
+  padding: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25%;
+          flex: 1 1 25%;
+  max-width: 350px;
+  min-width: 250px;
+}
+
+#app.view3 .list-camera .details {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#app.view3 .list-camera .camera-stream {
+  width: 100%;
 }
