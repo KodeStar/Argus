@@ -66,5 +66,16 @@ class Zoneminder implements CameraContract
 
         return $output;
     }
-    public function single() {}
+    public function add($key, $name, $feed, $preview, $status) 
+    {
+        $data = [
+            
+        ];
+        $this->addCameraToZoneminder($data);
+    }
+
+    protected function addCameraToZoneminder($data)
+    {
+
+    }
 }

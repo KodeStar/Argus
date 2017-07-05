@@ -11,8 +11,9 @@ class CameraServiceProvider extends ServiceProvider
 {
 
     public $available = [
-        'zoneminder' => 'Zoneminder',
-        'shinobi' => 'Shinobi'
+        'zoneminder' => ['class' => 'Zoneminder', 'name' => 'ZoneMinder'],
+        'shinobi' => ['class' => 'Shinobi', 'name' => 'Shinobi'],
+        'argus' => ['class' => 'Argus', 'name' => 'Argus (Live stream only)'],
     ];
 
     /**
@@ -45,7 +46,7 @@ class CameraServiceProvider extends ServiceProvider
             }
             
             $available = $this->available;
-            $interface = isset($available[$backend]) ? $available[$backend] : 'Zoneminder';
+            $interface = isset($available[$backend]['class']) ? $available[$backend]['class'] : 'Zoneminder';
             $interface = "\App\Helpers\\".$interface;
 
             return new $interface();

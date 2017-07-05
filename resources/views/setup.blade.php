@@ -14,7 +14,7 @@
             <label>Backend</label>
             <select name="backend">
                 @foreach($available_backends as $interface => $backend)
-                <option value="{{ $interface }}">{{ $backend }}</option>
+                <option value="{{ $interface }}">{{ $backend['name'] }}</option>
                 @endforeach
             </select>
         </div>

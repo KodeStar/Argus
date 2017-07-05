@@ -31,7 +31,7 @@ class CameraController extends Controller
 
     /**
      * Check if database is ready, if it isn't redirect user to setup page
-     * @return [type] [description]
+     * @return boolean
      */
     public function databaseReady()
     {
@@ -44,6 +44,10 @@ class CameraController extends Controller
     
     }
 
+    /**
+     * Setup page
+     * @return void
+     */
     public function setup()
     {
         $data = [];
@@ -52,9 +56,9 @@ class CameraController extends Controller
 
 
     /**
-     * Store a new blog post.
+     * Store setup details
      *
-     * @param  Request  $request
+     * @param  Request  $request, CameraContract $camera
      * @return Response
      */
     public function storesetup(Request $request, CameraContract $camera)
@@ -81,6 +85,10 @@ class CameraController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Create the database
+     * @return void
+     */
     protected function createDatabase()
     {
         $path = base_path().'/database/database.sqlite';

@@ -29,4 +29,18 @@ class Camera extends Model
         }
     }
 
+    /**
+     * Scan network for cameras
+     * @return [type] [description]
+     */
+    public static function scan()
+    {
+        preg_match('/^(?P<class_c>[^\.]+.[^\.]+.[^\.]+)/', $_SERVER["REMOTE_ADDR"], $match);
+        $urls = [];
+        for($i=2;$i<=255;$i++) {
+            $urls[] = $match.".".$i;
+        }
+
+    }
+
 }

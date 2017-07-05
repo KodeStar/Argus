@@ -63,5 +63,5 @@ class Shinobi implements CameraContract
 
         return $output;
     }
-    public function single() {}
+    public function add() {}
 }
