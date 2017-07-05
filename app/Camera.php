@@ -35,12 +35,20 @@ class Camera extends Model
      */
     public static function scan()
     {
-        preg_match('/^(?P<class_c>[^\.]+.[^\.]+.[^\.]+)/', $_SERVER["REMOTE_ADDR"], $match);
+        $range = self::scan_range();
         $urls = [];
         for($i=2;$i<=255;$i++) {
-            $urls[] = $match.".".$i;
+            $urls[] = $range.".".$i;
         }
 
     }
+
+    public static function scan_range()
+    {
+        preg_match('/^(?P<class_c>[^\.]+.[^\.]+.[^\.]+)/', $_SERVER["REMOTE_ADDR"], $match);
+        return $match['class_c'];
+    }
+
+
 
 }

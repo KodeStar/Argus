@@ -23,6 +23,8 @@ class CameraServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $view = (Setting::databaseReady()) ? Setting::get_value('view') : 'view1';
+        view()->share('view', $view);
         view()->share('available_backends', $this->available);
     }
     /**
@@ -39,7 +41,7 @@ class CameraServiceProvider extends ServiceProvider
             $backend = 'zoneminder';
 
             if(file_exists($path) && filesize($path) > 0) {
-                $backend = Setting::value('backend');
+                $backend = Setting::get_value('backend');
             } else {
                 $request = app(\Illuminate\Http\Request::class);
                 if(null !== $request->input('backend')) $backend = $request->input('backend');

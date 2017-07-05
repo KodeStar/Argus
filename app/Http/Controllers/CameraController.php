@@ -23,26 +23,10 @@ class CameraController extends Controller
 
     public function dashboard()
     {
-        if(!$this->databaseReady()) return redirect('setup');
-
         $data['cameras'] = Camera::all();
         return view('home', $data);
     }
 
-    /**
-     * Check if database is ready, if it isn't redirect user to setup page
-     * @return boolean
-     */
-    public function databaseReady()
-    {
-        $path = base_path().'/database/database.sqlite';
-
-        if(file_exists($path) && filesize($path) > 0) {
-            return true;
-        }
-        return false;
-    
-    }
 
     /**
      * Setup page
@@ -69,7 +53,7 @@ class CameraController extends Controller
         ]);
 
 
-        if(!$this->databaseReady()) $this->createDatabase();
+        if(!Setting::databaseReady()) $this->createDatabase();
 
         $backend = new Setting;
         $backend->key = 'backend';
@@ -79,10 +63,32 @@ class CameraController extends Controller
         $backend_location->key = 'backend_location';
         $backend_location->value = $request->input('backend_location');
         $backend_location->save();
+        $backend_location = new Setting;
+        $backend_location->key = 'view';
+        $backend_location->value = 'view1';
+        $backend_location->save();
 
         Camera::populate($camera->list());
 
         return redirect('/');
+    }
+
+    public function add($step=false)
+    {
+        //die(print_r(Camera::scan_range()));
+        $data = [];
+        switch($step) {
+            case 'manual':
+                return view('cameras/manual', $data);
+                break;
+            case 'scan':
+                $data['range'] = Camera::scan_range();
+                return view('cameras/scan', $data);
+                break;
+            default:
+                return view('cameras/add', $data);
+                break;
+        }
     }
 
     /**
@@ -99,6 +105,39 @@ class CameraController extends Controller
 
         Artisan::call('migrate');
     }
+
+    public function nextView()
+    {
+        $view = Setting::where('key', 'view')->first();
+        //print_r($view);
+        $current = $view->value;
+        $possible_views = $this->possibleViews();
+        $keys = array_keys($possible_views);
+        $search = array_search($current,$keys);
+        $next = isset($keys[$search+1]) ? $keys[$search+1] : 'view1';
+       // var_dump($next);
+        $view->value = $next;
+        $view->save();
+        return $next;
+    }
+
+    public function getNextView()
+    {
+        $this->nextView();
+        return back();
+    }
+
+
+    protected function possibleViews()
+    {
+        return [
+            'view1' => 'List',
+            'view2' => '2 by 2',
+            'view3' => '4 x 4',
+        ];
+    }
+
+    
 
 
     //

@@ -2163,6 +2163,7 @@ body {
   background-image: linear-gradient(to bottom, #44cbbc 0%, #28a7b9 100%);
   background-repeat: repeat-x;
   border-radius: 0 0.25rem 0.25rem 0;
+  transition: all 0.3s ease-in;
 }
 
 #rightbar .title-bar {
@@ -2204,7 +2205,7 @@ body {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
 
-.btn:hover, .btn:-webkit-any-link {
+.btn:hover {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -2215,6 +2216,45 @@ body {
 
 .btn-alert {
   background: #cc0000;
+}
+
+.btn-recessed {
+  background: #eaedee;
+  font-size: 16px;
+  text-align: center;
+  padding: 15px 30px;
+  border-radius: 20px;
+  display: inline-block;
+  position: relative;
+  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.27), 0 1px 1px rgba(255, 255, 255, 0.68);
+  color: #35b3aa !important;
+}
+
+.btn-recessed:before {
+  content: '';
+  border-radius: 15px;
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  background: #fdfdfd;
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.27), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in;
+}
+
+.btn-recessed span {
+  position: relative;
+  text-shadow: none;
+  top: -1px;
+}
+
+.btn-recessed:hover {
+  color: #35b3aa !important;
+}
+
+.btn-recessed:hover:before {
+  background: #f6f6f6;
 }
 
 .list-camera {
@@ -2394,6 +2434,7 @@ body {
 
 .inputrow {
   margin: 8px 0;
+  text-align: left;
 }
 
 input[type=text], select {
@@ -2410,10 +2451,50 @@ label {
   max-width: 200px;
 }
 
-form.style {
+.boxed {
   margin: 30px;
-  padding: 10px 20px;
+  padding: 50px;
   background-repeat: repeat-x;
   background-image: linear-gradient(75deg, #ffffff, #f5f5f5);
   border: 1px solid #e2e2e2;
+  color: #23494a;
+  font-size: 15px;
+}
+
+#add.select a {
+  margin: 0 10px;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+#app.view2 #rightbar {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 110px;
+          flex: 0 0 110px;
+}
+
+#app.view2 #cameralist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+#app.view2 .list-camera {
+  padding: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 25%;
+          flex: 1 1 25%;
+  max-width: 350px;
+  min-width: 250px;
+}
+
+#app.view2 .list-camera .info, #app.view2 .list-camera .actions {
+  display: none;
 }

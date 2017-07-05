@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <form class="style" method="POST" action="/setup">
+    <form class="boxed" method="POST" action="/setup">
         {{ csrf_field() }}
         <div class="inputrow">
             <label>Backend</label>

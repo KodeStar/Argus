@@ -11,12 +11,26 @@
 |
 */
 
-Route::get('/', [
-    'uses' => 'CameraController@dashboard'
-]);
+
 Route::get('setup', [
     'as' => 'setup', 'uses' => 'CameraController@setup'
 ]);
 Route::post('setup', [
     'uses' => 'CameraController@storesetup'
 ]);
+
+
+Route::group(['middleware' => ['database']], function () {
+    Route::get('/', [
+        'uses' => 'CameraController@dashboard'
+    ]);
+    Route::get('add/{step?}', [
+        'as' => 'add', 'uses' => 'CameraController@add'
+    ]);
+    Route::get('change_view', [
+        'as' => 'change_view', 'uses' => 'CameraController@getNextView'
+    ]);
+    Route::get('change_view_ajax', [
+        'as' => 'change_view_ajax', 'uses' => 'CameraController@nextView'
+    ]);
+});

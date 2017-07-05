@@ -8,11 +8,15 @@
 @endsection
 
 @section('content')
+    <div id="cameralist">
     @if(count($cameras) > 1)
         @foreach ($cameras as $camera)
             @include('cameras/list')
         @endforeach
     @else
-        No cameras available, add one now?
+        <div class="boxed">
+        No cameras currently added, add one now?
+        </div>
     @endif
+    </div>
 @endsection

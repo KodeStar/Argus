@@ -9,7 +9,7 @@
   <meta name="author" content="SitePoint">
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Lobster+Two" rel="stylesheet">
-  <link rel="stylesheet" href="css/app.css?v=1.0">
+  <link rel="stylesheet" href="/css/app.css?v=1.0">
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -18,7 +18,7 @@
 
 <body>
     <div class="container">
-        <div id="app">
+        <div id="app" class="{{ $view }}">
 @if ($errors->any())
     <div class="alert-container">
       <div class="alert alert-danger">
@@ -48,13 +48,14 @@
                     <span class="app-name">Argus</span> <span class="app-version">v1.0</span>
                 </div>
                 <div class="actions">
-                  <a class="add-camera" href=""><i class="icon-plus"></i></a>
+                  <a class="add-camera" href="{{ route('add') }}"><i class="icon-plus"></i></a>
+                  <a id="changeclass" class="" href="{{ route('change_view') }}">Next view</a>
                 </div>
 
             </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
