@@ -274,7 +274,7 @@ body {
     height: 90px;
     border-radius: 50%;
     display: inline-block;
-    
+    margin: 0 5px;
     position: relative;
     box-shadow: 0 -1px 1px rgba(0, 0, 0, .77), 0 1px 1px rgba(255, 255, 255, .68);
     &:before {
@@ -306,8 +306,9 @@ body {
         color: #d5efed;
     }
     &.smaller {
-        width: 50px;
-        height: 50px;
+        width: 65px;
+        height: 65px;
+        line-height: 65px;
         font-size: 35px;
     }
 }

@@ -48,7 +48,7 @@
                     <span class="app-name">Argus</span> <span class="app-version">v1.0</span>
                 </div>
                 <div class="actions">
-                  <a class="round-button" href="{{ route('add') }}"><i class="icon-plus"></i></a>
+                  <a class="round-button smaller" href="{{ route('add') }}"><i class="icon-plus"></i></a>
                   <a class="round-button" href="{{ route('add') }}"><i class="icon-plus"></i></a>
                   <a id="changeclass" class="round-button smaller" href="{{ route('change_view') }}"><i class="icon-surveillance"></i></a>
                 </div>
