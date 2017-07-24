@@ -17,7 +17,7 @@ class Zoneminder implements CameraContract
     public function getFeed()
     {
         $demo = env('DEMO', false);
-        $backend = Setting::value('backend_location');
+        $backend = Setting::get_value('backend_location');
 
         if($demo) { // return early with a demo JSON file
             return json_decode(file_get_contents('../resources/assets/camera.json'));
@@ -46,12 +46,14 @@ class Zoneminder implements CameraContract
     {
         $demo = env('DEMO', false);
         $output = [];
+        
+        
 
         $cameras = $this->getFeed();
+        $backend = Setting::get_value('backend_location');
 
         foreach($cameras->monitors as $camera) {
             //print_r($camera);
-            $backend = Setting::value('backend_location');
             $preview = $backend.'/zm/cgi-bin/nph-zms?mode=jpeg&scale=100&maxfps=4&monitor='.$camera->Monitor->Id;
             if($demo) $preview = '/img/camera1.png';
             $output[] = [
