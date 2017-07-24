@@ -64,6 +64,14 @@ class CameraController extends Controller
         $backend_location->value = $request->input('backend_location');
         $backend_location->save();
         $backend_location = new Setting;
+        $backend_location->key = 'backend_username';
+        $backend_location->value = $request->input('backend_username');
+        $backend_location->save();
+        $backend_location = new Setting;
+        $backend_location->key = 'backend_password';
+        $backend_location->value = $request->input('backend_password');
+        $backend_location->save();
+        $backend_location = new Setting;
         $backend_location->key = 'view';
         $backend_location->value = 'view1';
         $backend_location->save();
