@@ -28,4 +28,4 @@ run:
 
 More to come 
 
-<p align="center"><img src="http://i.imgur.com/rSxHiLC.png"></p>
+<p align="center"><img src="http://i.imgur.com/I06gwJU.png"></p>
