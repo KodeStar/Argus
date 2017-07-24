@@ -4,8 +4,8 @@
         <div class="info">
             <h3>{{ $camera->name }}</h3>
             <dl>
-                <dt>IP Address</dt>
-                <dd>192.168.10.1</dd>
+                <dt>Source</dt>
+                <dd>{{ $camera->source }}</dd>
                 <dt>Status</dt>
                 <dd>Active</dd>
                 <dt>Events</dt>

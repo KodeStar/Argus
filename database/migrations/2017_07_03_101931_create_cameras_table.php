@@ -17,7 +17,7 @@ class CreateCamerasTable extends Migration
             $table->increments('id');
             $table->string('key');
             $table->string('name')->nullable();
-            $table->ipAddress('ip')->nullable();
+            $table->string('source')->nullable();
             $table->string('feed')->nullable();
             $table->string('preview')->nullable();
             $table->boolean('status')->nullable();
