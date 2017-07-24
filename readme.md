@@ -21,6 +21,11 @@ cd to /path/to/app and run:
 `npm install` (for development tools)
 `composer install`
 
+Create a .env in /path/to/app with the contents of https://pastebin.com/mGNGjXbq
+
+run:
+`php artisan key:generate`
+
 More to come 
 
 <p align="center"><img src="http://i.imgur.com/rSxHiLC.png"></p>
