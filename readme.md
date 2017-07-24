@@ -1,6 +1,8 @@
 [linuxserverurl]: https://linuxserver.io
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
+<p align="center"><img src="http://i.imgur.com/I06gwJU.png"></p>
+
 ## About Argus
 
 Argus is designed as a simple, user friendly front end to complicated NVR setups.
@@ -47,4 +49,3 @@ run:
 
 More to come 
 
-<p align="center"><img src="http://i.imgur.com/I06gwJU.png"></p>
