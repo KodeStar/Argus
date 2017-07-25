@@ -82,9 +82,6 @@ class Zoneminder implements CameraContract
     {
         $demo = env('DEMO', false);
         $output = [];
-        
-        
-
         $cameras = $this->getFeed();
         //die(print_r($cameras));
         $backend = Setting::get_value('backend_location');
@@ -94,23 +91,7 @@ class Zoneminder implements CameraContract
             $preview = $backend.'/zm/cgi-bin/nph-zms?mode=jpeg&scale=100&maxfps=4&monitor='.$camera->Monitor->Id;
             if($demo) $preview = '/img/camera1.png';
 
-            $source = '';
-            if ( $camera->Monitor->Type == "Local" ) {
-              $source = $camera->Monitor->Device.' ('.$camera->Monitor->Channel.')';
-            }
-            if ( $camera->Monitor->Type == "Remote" ) {
-              $source = $camera->Monitor->Host;
-            } 
-            if ( $camera->Monitor->Type == "File" || $camera->Monitor->Type == "cURL" ) {
-              $source = preg_replace( '/^.*\//', '', $camera->Monitor->Path );
-            } 
-            if ( $camera->Monitor->Type == "Ffmpeg" || $camera->Monitor->Type == "Libvlc" ) {
-              $domain = parse_url( $camera->Monitor->Path, PHP_URL_HOST );
-              $source = $domain ? $domain : preg_replace( '/^.*\//', '', $camera->Monitor->Path );
-            } 
-            if ( $source == '' ) {
-              $source = 'Monitor ' . $camera->Monitor->Id;
-            }
+            $source = $this->getSourceFromType($camera);
 
             $output[] = [
                 'key' => $camera->Monitor->Id,
@@ -125,6 +106,26 @@ class Zoneminder implements CameraContract
 
         return $output;
     }
+
+    protected function getSourceFromType($camera)
+    {
+        if ( $camera->Monitor->Type == "Ffmpeg" || $camera->Monitor->Type == "Libvlc" ) {
+            $domain = parse_url( $camera->Monitor->Path, PHP_URL_HOST );
+            return $domain ? $domain : preg_replace( '/^.*\//', '', $camera->Monitor->Path );
+        } 
+        if ( $camera->Monitor->Type == "Local" ) {
+            return $camera->Monitor->Device.' ('.$camera->Monitor->Channel.')';
+        }
+        if ( $camera->Monitor->Type == "Remote" ) {
+            return $camera->Monitor->Host;
+        } 
+        if ( $camera->Monitor->Type == "File" || $camera->Monitor->Type == "cURL" ) {
+            return preg_replace( '/^.*\//', '', $camera->Monitor->Path );
+        } 
+        return 'Monitor ' . $camera->Monitor->Id;
+
+    }
+
     public function add($key, $name, $feed, $preview, $status) 
     {
         $data = [
